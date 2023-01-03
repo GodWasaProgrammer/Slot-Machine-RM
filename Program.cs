@@ -10,22 +10,28 @@
             Console.WriteLine("Welcome to our slot machine");
             int[,] slotArray = new int[3, 3] { { 0, 0, 0, }, { 0, 0, 0, }, { 0, 0, 0, } };
 
-            for (int i = 0; i < slotArray.GetLength(0); i++)
+            do
             {
-                slotArray[i, 0] = slotArrayRandom.Next(MAXVALUE);
-                slotArray[i, 1] = slotArrayRandom.Next(MAXVALUE);
-                slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
+                for (int i = 0; i < slotArray.GetLength(0); i++)
+                {
+                    slotArray[i, 0] = slotArrayRandom.Next(MAXVALUE);
+                    slotArray[i, 1] = slotArrayRandom.Next(MAXVALUE);
+                    slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
+                }
+
+                for (int i = 0; i < slotArray.GetLength(0); i++)
+                {
+                    Console.Write($"{slotArray[i, 0]}");
+
+                    Console.Write($"{slotArray[i, 1]}");
+
+                    Console.WriteLine($"{slotArray[i, 2]}");
+                }
+
+                Console.WriteLine("Press any key to roll again");
+                Console.ReadKey();
             }
-
-            for (int i = 0; i < slotArray.GetLength(0); i++)
-            {
-                Console.Write($"{slotArray[i, 0]}");
-
-                Console.Write($"{slotArray[i, 1]}");
-
-                Console.WriteLine($"{slotArray[i, 2]}");
-            }
-
+            while (true);
 
         }
     }
