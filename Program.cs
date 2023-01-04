@@ -6,8 +6,9 @@
 
         static void Main()
         {
-            Random slotArrayRandom = new();
             Console.WriteLine("Welcome to our slot machine");
+
+            Random slotArrayRandom = new();
             int[,] slotArray = new int[3, 3] { { 0, 0, 0, }, { 0, 0, 0, }, { 0, 0, 0, } };
             int round = 0;
             do
@@ -19,17 +20,12 @@
                     slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
                 }
 
-
-
                 round++;
                 Console.WriteLine($"Current round:{round}");
                 Console.WriteLine("-------");
 
                 for (int i = 0; i < slotArray.GetLength(0); i++)
-
-
                 {
-
                     Console.Write($" {slotArray[i, 0]}");
 
                     Console.Write($" {slotArray[i, 1]}");
