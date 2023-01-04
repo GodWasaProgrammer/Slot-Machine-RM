@@ -34,48 +34,37 @@
                     if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the mid horizontal line!!");
-
-                        Console.ReadKey();
-                        break;
                     }
 
                     if (slotArray[0, 0] == slotArray[0, 1] && slotArray[0, 1] == slotArray[0, 2])
                     {
                         Console.WriteLine("You have won on the top horizontal line!");
-                        Console.ReadKey();
-                        break;
                     }
 
                     if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the bottom horizontal line!");
-                        Console.ReadKey();
-                        break;
                     }
 
                     if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
                     {
                         Console.WriteLine("You have won on the first vertical line");
-                        Console.ReadKey();
-                        break;
                     }
 
                     if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
                     {
                         Console.WriteLine("You have won on the second vertical line");
-                        Console.ReadKey();
-                        break;
                     }
 
                     if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the the third vertical line");
-                        Console.ReadKey();
-                        break;
                     }
 
                 }
 
+                Console.WriteLine("press any key to roll again");
+                Console.ReadKey();
             }
             while (true);
 
