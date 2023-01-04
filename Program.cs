@@ -6,7 +6,7 @@
 
         static void Main()
         {
-            Random slotArrayRandom = new Random();
+            Random slotArrayRandom = new();
             Console.WriteLine("Welcome to our slot machine");
             int[,] slotArray = new int[3, 3] { { 0, 0, 0, }, { 0, 0, 0, }, { 0, 0, 0, } };
             int round = 0;
