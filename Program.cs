@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        const int MAXVALUE = 9;
+        const int MAXVALUE = 10;
 
         static void Main()
         {
