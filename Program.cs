@@ -46,7 +46,7 @@
                         break;
                     }
 
-                    if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
+                    if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the bottom horizontal line!");
                         Console.ReadKey();
