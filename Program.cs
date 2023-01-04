@@ -18,18 +18,64 @@
                     slotArray[i, 1] = slotArrayRandom.Next(MAXVALUE);
                     slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
                 }
+                int round = 0;
+                for (int i = 0; i < slotArray.GetLength(0); i++)
+                {
+                    round++;
+                    Console.Write($" {slotArray[i, 0]}");
+
+                    Console.Write($" {slotArray[i, 1]}");
+
+                    Console.WriteLine($" {slotArray[i, 2]}");
+                }
 
                 for (int i = 0; i < slotArray.GetLength(0); i++)
                 {
-                    Console.Write($"{slotArray[i, 0]}");
+                    if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
+                    {
+                        Console.WriteLine("You have won on the mid horizontal line!!");
 
-                    Console.Write($"{slotArray[i, 1]}");
+                        Console.ReadKey();
+                        break;
+                    }
 
-                    Console.WriteLine($"{slotArray[i, 2]}");
+                    if (slotArray[0, 0] == slotArray[0, 1] && slotArray[0, 1] == slotArray[0, 2])
+                    {
+                        Console.WriteLine("You have won on the top horizontal line!");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                    if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
+                    {
+                        Console.WriteLine("You have won on the bottom horizontal line!");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                    if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
+                    {
+                        Console.WriteLine("You have won on the first vertical line");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                    if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
+                    {
+                        Console.WriteLine("You have won on the second vertical line");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                    if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
+                    {
+                        Console.WriteLine("You have won on the the third vertical line");
+                        Console.ReadKey();
+                        break;
+                    }
+
                 }
 
-                Console.WriteLine("Press any key to roll again");
-                Console.ReadKey();
             }
             while (true);
 
