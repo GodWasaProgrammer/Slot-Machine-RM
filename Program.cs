@@ -98,7 +98,9 @@
 
                 round++;
                 Console.WriteLine($"Current round:{round}");
+
                 Console.WriteLine($"current cash{cash}");
+
                 Console.WriteLine("-------");
 
                 for (int i = 0; i < slotArray.GetLength(0); i++)
@@ -160,6 +162,7 @@
                         cash++;
                         btmH = false;
                     }
+
                 }
 
                 else if (btmH)
