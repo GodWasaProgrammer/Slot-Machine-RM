@@ -47,55 +47,81 @@
                         cash -= 6;
                         allBets = true;
                     }
+
                 }
+
                 if (allBets == false)
                 {
-                    Console.WriteLine("do you wanna bet on top horizontal? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        topH = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet on top horizontal? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            topH = true;
+                            cash--;
+                        }
+
                     }
 
-                    Console.WriteLine("do you wanna bet mid horizontal? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        midH = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet mid horizontal? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            midH = true;
+                            cash--;
+                        }
+
                     }
 
-                    Console.WriteLine("do you wanna bet bottom horizontal? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        btmH = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet bottom horizontal? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            btmH = true;
+                            cash--;
+                        }
+
                     }
 
-                    Console.WriteLine("do you wanna bet first vertical? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        firstV = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet first vertical? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            firstV = true;
+                            cash--;
+                        }
+
                     }
 
-                    Console.WriteLine("do you wanna bet second vertical? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        secondV = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet second vertical? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            secondV = true;
+                            cash--;
+                        }
+
                     }
 
-                    Console.WriteLine("do you wanna bet third vertical? type y");
-
-                    if (Console.ReadLine() == "y")
+                    if (cash > 1)
                     {
-                        thirdV = true;
-                        cash--;
+                        Console.WriteLine("do you wanna bet third vertical? type y");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            thirdV = true;
+                            cash--;
+                        }
+
                     }
 
                 }
