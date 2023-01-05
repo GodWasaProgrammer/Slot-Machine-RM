@@ -32,6 +32,7 @@
                 bool allBets = false;
                 bool diagonalTop = false;
                 bool diagonalBtm = false;
+                int cashUpOrDown = cash;
 
                 Console.WriteLine("Which lines would you like to bet on?");
 
@@ -217,7 +218,6 @@
                         Console.WriteLine("You have won on the bottom horizontal line!");
                         cash += 2;
                         Console.ForegroundColor = ConsoleColor.White;
-
                     }
 
                 }
@@ -323,8 +323,21 @@
                     Console.WriteLine("you lost your bet on the bottom diagonal line");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
+                
+                if (cash > cashUpOrDown)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Your cash after round {round} is : {cash}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
 
-                Console.WriteLine($"Your cash after round {round} is : {cash}");
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Your cash after round {round} is : {cash}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
             }
             while (cash > 0);
 
