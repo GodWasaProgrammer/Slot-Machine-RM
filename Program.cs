@@ -31,20 +31,24 @@
 
                 Console.WriteLine("Which lines would you like to bet on?");
 
-                Console.WriteLine("Do you wanna bet all lines? (6 dollars) type y");
-
-                if (Console.ReadLine() == "y")
+                bool allBets = false;
+                if (cash > 6)
                 {
-                    topH = true;
-                    midH = true;
-                    btmH = true;
-                    firstV = true;
-                    secondV = true;
-                    thirdV = true;
-                    cash = cash - 6;
-                }
+                    Console.WriteLine("Do you wanna bet all lines? (6 dollars) type y");
 
-                else
+                    if (Console.ReadLine() == "y")
+                    {
+                        topH = true;
+                        midH = true;
+                        btmH = true;
+                        firstV = true;
+                        secondV = true;
+                        thirdV = true;
+                        cash -= 6;
+                        allBets = true;
+                    }
+                }
+                if (allBets == false)
                 {
                     Console.WriteLine("do you wanna bet on top horizontal? type y");
 
@@ -116,13 +120,10 @@
 
                 if (slotArray[0, 0] == slotArray[0, 1] && slotArray[0, 1] == slotArray[0, 2])
                 {
-                    Console.WriteLine("the top horizontal line was a winner!");
-
                     if (topH)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("you have won on the top horizontal line!");
                         cash++;
-                        topH = false;
                     }
 
                 }
@@ -130,18 +131,14 @@
                 else if (topH)
                 {
                     Console.WriteLine("you lost your bet on the top horizontal line");
-                    topH = false;
                 }
 
                 if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
                 {
-                    Console.WriteLine("You have won on the mid horizontal line!!");
-
                     if (midH)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("You have won on the mid horizontal line!");
                         cash++;
-                        midH = false;
                     }
 
                 }
@@ -149,18 +146,14 @@
                 else if (midH)
                 {
                     Console.WriteLine("you lost your bet on the mid horizontal line");
-                    midH = false;
                 }
 
                 if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                 {
-                    Console.WriteLine("You have won on the bottom horizontal line!");
-
                     if (btmH)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("You have won on the bottom horizontal line!");
                         cash++;
-                        btmH = false;
                     }
 
                 }
@@ -168,18 +161,14 @@
                 else if (btmH)
                 {
                     Console.WriteLine("you lost your bet on bottom horizontal line");
-                    btmH = false;
                 }
 
                 if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
                 {
-                    Console.WriteLine("You have won on the first vertical line");
-
                     if (firstV)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("You have won on the first vertical line!");
                         cash++;
-                        firstV = false;
                     }
 
                 }
@@ -187,18 +176,14 @@
                 else if (firstV)
                 {
                     Console.WriteLine("you lost your bet on first vertical line");
-                    firstV = false;
                 }
 
                 if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
                 {
-                    Console.WriteLine("You have won on the second vertical line");
-
                     if (secondV)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("You have won on the second vertical line!");
                         cash++;
-                        secondV = false;
                     }
 
                 }
@@ -206,18 +191,14 @@
                 else if (secondV)
                 {
                     Console.WriteLine("you lost your bet on second vertical line");
-                    secondV = false;
                 }
 
                 if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
                 {
-                    Console.WriteLine("You have won on the the third vertical line");
-
                     if (thirdV)
                     {
-                        Console.WriteLine("You have won your bet!");
+                        Console.WriteLine("You have won on the the third vertical line!");
                         cash++;
-                        thirdV = false;
                     }
 
                 }
@@ -225,7 +206,6 @@
                 else if (thirdV)
                 {
                     Console.WriteLine("you lost your bet on the third vertical line");
-                    thirdV = false;
                 }
 
             }
