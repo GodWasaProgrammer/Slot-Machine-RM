@@ -29,11 +29,14 @@
                 bool secondV = false;
                 bool thirdV = false;
                 bool allBets = false;
+                bool diagonalTop = false;
+                bool diagonalBtm = false;
+
                 Console.WriteLine("Which lines would you like to bet on?");
 
                 if (cash > 6)
                 {
-                    Console.WriteLine("Do you wanna bet all lines? (6 dollars) type y");
+                    Console.WriteLine("Do you wanna bet all lines? (8 dollars) type y");
 
                     if (Console.ReadLine() == "y")
                     {
@@ -43,8 +46,10 @@
                         firstV = true;
                         secondV = true;
                         thirdV = true;
-                        cash -= 6;
                         allBets = true;
+                        diagonalTop = true;
+                        diagonalBtm = true;
+                        cash -= 8;
                     }
 
                 }
@@ -121,6 +126,28 @@
                             cash--;
                         }
 
+                    }
+
+                    if (cash > 0)
+                    {
+                        Console.WriteLine("do you wanna bet on the top diagonal?");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            diagonalTop = true;
+                            cash--;
+                        }
+                    }
+
+                    if (cash > 0)
+                    {
+                        Console.WriteLine("do you wanna bet on the bottom diagonal?");
+
+                        if (Console.ReadLine() == "y")
+                        {
+                            diagonalBtm = true;
+                            cash--;
+                        }
                     }
 
                 }
@@ -222,7 +249,7 @@
                 {
                     if (thirdV)
                     {
-                        Console.WriteLine("You have won on the the third vertical line!");
+                        Console.WriteLine("You have won on the third vertical line!");
                         cash++;
                     }
 
@@ -231,6 +258,38 @@
                 else if (thirdV)
                 {
                     Console.WriteLine("you lost your bet on the third vertical line");
+                }
+
+                /////////////////////////////////////////////////////////////////////////////////
+
+                if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
+                {
+                    if (diagonalTop)
+                    {
+                        Console.WriteLine("You have won on the top diagonal line!");
+                        cash++;
+                    }
+
+                }
+
+                else if (diagonalTop)
+                {
+                    Console.WriteLine("you lost your bet on the top diagonal line");
+                }
+
+                if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
+                {
+                    if (diagonalBtm)
+                    {
+                        Console.WriteLine("You have won on the the bottom diagonal line!");
+                        cash++;
+                    }
+
+                }
+
+                else if (diagonalBtm)
+                {
+                    Console.WriteLine("you lost your bet on the bottom diagonal line");
                 }
 
             }
