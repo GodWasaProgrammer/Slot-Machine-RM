@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        const int MAXVALUE = 3;
+        const int MAXVALUE = 4;
         const int MINVALUE = 1;
 
         static void Main()
@@ -175,120 +175,153 @@
                 {
                     if (topH)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("you have won on the top horizontal line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (topH)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on the top horizontal line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
                 {
                     if (midH)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the mid horizontal line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (midH)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on the mid horizontal line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                 {
                     if (btmH)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the bottom horizontal line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
+
                     }
 
                 }
 
                 else if (btmH)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on bottom horizontal line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
                 {
                     if (firstV)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the first vertical line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (firstV)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on first vertical line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
                 {
                     if (secondV)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the second vertical line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (secondV)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on second vertical line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
                 {
                     if (thirdV)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the third vertical line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (thirdV)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on the third vertical line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
                 {
                     if (diagonalTop)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the top diagonal line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (diagonalTop)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on the top diagonal line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
                 {
                     if (diagonalBtm)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You have won on the the bottom diagonal line!");
                         cash += 2;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
                 }
 
                 else if (diagonalBtm)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("you lost your bet on the bottom diagonal line");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 Console.WriteLine($"Your cash after round {round} is : {cash}");
