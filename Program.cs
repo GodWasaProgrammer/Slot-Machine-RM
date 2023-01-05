@@ -51,7 +51,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         topH = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                     Console.WriteLine("do you wanna bet mid horizontal? type y");
@@ -59,7 +59,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         midH = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                     Console.WriteLine("do you wanna bet bottom horizontal? type y");
@@ -67,7 +67,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         btmH = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                     Console.WriteLine("do you wanna bet first vertical? type y");
@@ -75,7 +75,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         firstV = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                     Console.WriteLine("do you wanna bet second vertical? type y");
@@ -83,7 +83,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         secondV = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                     Console.WriteLine("do you wanna bet third vertical? type y");
@@ -91,7 +91,7 @@
                     if (Console.ReadLine() == "y")
                     {
                         thirdV = true;
-                        cash = cash - 1;
+                        cash--;
                     }
 
                 }
