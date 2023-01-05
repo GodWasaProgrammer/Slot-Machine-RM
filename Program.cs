@@ -13,13 +13,6 @@
             int round = 0;
             int cash = 100;
 
-            bool topH = false;
-            bool midH = false;
-            bool btmH = false;
-            bool firstV = false;
-            bool secondV = false;
-            bool thirdV = false;
-
             do
             {
                 for (int i = 0; i < slotArray.GetLength(0); i++)
@@ -28,6 +21,14 @@
                     slotArray[i, 1] = slotArrayRandom.Next(MAXVALUE);
                     slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
                 }
+
+                bool topH = false;
+                bool midH = false;
+                bool btmH = false;
+                bool firstV = false;
+                bool secondV = false;
+                bool thirdV = false;
+
                 Console.WriteLine("Which lines would you like to bet on?");
 
                 Console.WriteLine("Do you wanna bet all lines? (6 dollars) type y");
@@ -126,7 +127,7 @@
 
                 else if (topH)
                 {
-                    Console.WriteLine("you lost your bet on the top horizontal");
+                    Console.WriteLine("you lost your bet on the top horizontal line");
                     topH = false;
                 }
 
@@ -145,7 +146,7 @@
 
                 else if (midH)
                 {
-                    Console.WriteLine("you lost your bet on the mid horizontal");
+                    Console.WriteLine("you lost your bet on the mid horizontal line");
                     midH = false;
                 }
 
@@ -160,9 +161,10 @@
                         btmH = false;
                     }
                 }
+
                 else if (btmH)
                 {
-                    Console.WriteLine("you lost your bet on bottom horizontal!");
+                    Console.WriteLine("you lost your bet on bottom horizontal line");
                     btmH = false;
                 }
 
@@ -176,10 +178,12 @@
                         cash++;
                         firstV = false;
                     }
+
                 }
+
                 else if (firstV)
                 {
-                    Console.WriteLine("you lost your bet on first vertical!");
+                    Console.WriteLine("you lost your bet on first vertical line");
                     firstV = false;
                 }
 
@@ -193,10 +197,12 @@
                         cash++;
                         secondV = false;
                     }
+
                 }
+
                 else if (secondV)
                 {
-                    Console.WriteLine("you lost your bet on second vertical!");
+                    Console.WriteLine("you lost your bet on second vertical line");
                     secondV = false;
                 }
 
@@ -215,7 +221,7 @@
 
                 else if (thirdV)
                 {
-                    Console.WriteLine("you lost your bet on the third vertical!");
+                    Console.WriteLine("you lost your bet on the third vertical line");
                     thirdV = false;
                 }
 
