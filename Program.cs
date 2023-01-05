@@ -28,10 +28,9 @@
                 bool firstV = false;
                 bool secondV = false;
                 bool thirdV = false;
-
+                bool allBets = false;
                 Console.WriteLine("Which lines would you like to bet on?");
 
-                bool allBets = false;
                 if (cash > 6)
                 {
                     Console.WriteLine("Do you wanna bet all lines? (6 dollars) type y");
@@ -52,7 +51,7 @@
 
                 if (allBets == false)
                 {
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet on top horizontal? type y");
 
@@ -64,7 +63,7 @@
 
                     }
 
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet mid horizontal? type y");
 
@@ -76,7 +75,7 @@
 
                     }
 
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet bottom horizontal? type y");
 
@@ -88,7 +87,7 @@
 
                     }
 
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet first vertical? type y");
 
@@ -100,7 +99,7 @@
 
                     }
 
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet second vertical? type y");
 
@@ -112,7 +111,7 @@
 
                     }
 
-                    if (cash > 1)
+                    if (cash > 0)
                     {
                         Console.WriteLine("do you wanna bet third vertical? type y");
 
@@ -239,7 +238,6 @@
 
             Console.WriteLine("you ran out of money!");
             Console.WriteLine("Game over!");
-
         }
     }
 }
