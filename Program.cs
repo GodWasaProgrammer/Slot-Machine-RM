@@ -240,7 +240,7 @@
             Console.WriteLine("Game over!");
 
 
-            // left to be implemented : diagonal check of / 2,0 , 1,1 , 0,2 and \ 0,0 , 1,1 , 0,2
+            // left to be implemented : diagonal check of / 2,0 , 1,1 , 0,2 and \ 0,0 , 1,1 , 2,2
         }
     }
 }
