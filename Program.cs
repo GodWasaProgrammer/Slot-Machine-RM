@@ -2,7 +2,8 @@
 {
     internal class Program
     {
-        const int MAXVALUE = 10;
+        const int MAXVALUE = 3;
+        const int MINVALUE = 1;
 
         static void Main()
         {
@@ -17,9 +18,9 @@
             {
                 for (int i = 0; i < slotArray.GetLength(0); i++)
                 {
-                    slotArray[i, 0] = slotArrayRandom.Next(MAXVALUE);
-                    slotArray[i, 1] = slotArrayRandom.Next(MAXVALUE);
-                    slotArray[i, 2] = slotArrayRandom.Next(MAXVALUE);
+                    slotArray[i, 0] = slotArrayRandom.Next(MINVALUE,MAXVALUE);
+                    slotArray[i, 1] = slotArrayRandom.Next(MINVALUE,MAXVALUE);
+                    slotArray[i, 2] = slotArrayRandom.Next(MINVALUE,MAXVALUE);
                 }
 
                 bool topH = false;
@@ -155,7 +156,7 @@
                 round++;
                 Console.WriteLine($"Current round:{round}");
 
-                Console.WriteLine($"current cash{cash}");
+                Console.WriteLine($"current cash {cash}");
 
                 Console.WriteLine("-------");
 
@@ -175,7 +176,7 @@
                     if (topH)
                     {
                         Console.WriteLine("you have won on the top horizontal line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -190,7 +191,7 @@
                     if (midH)
                     {
                         Console.WriteLine("You have won on the mid horizontal line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -205,7 +206,7 @@
                     if (btmH)
                     {
                         Console.WriteLine("You have won on the bottom horizontal line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -220,7 +221,7 @@
                     if (firstV)
                     {
                         Console.WriteLine("You have won on the first vertical line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -235,7 +236,7 @@
                     if (secondV)
                     {
                         Console.WriteLine("You have won on the second vertical line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -250,7 +251,7 @@
                     if (thirdV)
                     {
                         Console.WriteLine("You have won on the third vertical line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -260,14 +261,12 @@
                     Console.WriteLine("you lost your bet on the third vertical line");
                 }
 
-                /////////////////////////////////////////////////////////////////////////////////
-
                 if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
                 {
                     if (diagonalTop)
                     {
                         Console.WriteLine("You have won on the top diagonal line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -282,7 +281,7 @@
                     if (diagonalBtm)
                     {
                         Console.WriteLine("You have won on the the bottom diagonal line!");
-                        cash++;
+                        cash += 2;
                     }
 
                 }
@@ -292,14 +291,12 @@
                     Console.WriteLine("you lost your bet on the bottom diagonal line");
                 }
 
+                Console.WriteLine($"Your cash after round {round} is : {cash}");
             }
             while (cash > 0);
 
             Console.WriteLine("you ran out of money!");
             Console.WriteLine("Game over!");
-
-
-            // left to be implemented : diagonal check of / 2,0 , 1,1 , 0,2 and \ 0,0 , 1,1 , 2,2
         }
     }
 }
