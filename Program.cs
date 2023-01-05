@@ -341,6 +341,7 @@
             }
             while (cash > 0);
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("you ran out of money!");
             Console.WriteLine("Game over!");
         }
