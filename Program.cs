@@ -4,25 +4,19 @@
     {
         const int MAXVALUE = 4;
         const int MINVALUE = 1;
+        const int MAXBET = 8;
+        const int BROKE = 0;
+        const int WINPAYOUT = 2;
 
         static void Main()
         {
             Console.WriteLine("Welcome to our slot machine");
 
-            Random slotArrayRandom = new();
-            int[,] slotArray = new int[3, 3];
             int round = 0;
             int cash = 100;
 
             do
             {
-                for (int i = 0; i < slotArray.GetLength(0); i++)
-                {
-                    slotArray[i, 0] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
-                    slotArray[i, 1] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
-                    slotArray[i, 2] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
-                }
-
                 bool topH = false;
                 bool midH = false;
                 bool btmH = false;
@@ -36,9 +30,9 @@
 
                 Console.WriteLine("Which lines would you like to bet on?");
 
-                if (cash > 8)
+                if (cash > MAXBET)
                 {
-                    Console.WriteLine("Do you wanna bet all lines? (8 dollars) type y");
+                    Console.WriteLine($"Do you wanna bet all lines? ({MAXBET} dollars) type y");
 
                     if (Console.ReadLine() == "y")
                     {
@@ -51,14 +45,14 @@
                         allBets = true;
                         diagonalTop = true;
                         diagonalBtm = true;
-                        cash -= 8;
+                        cash -= MAXBET;
                     }
 
                 }
 
                 if (allBets == false)
                 {
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet on top horizontal? type y");
 
@@ -70,7 +64,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet mid horizontal? type y");
 
@@ -82,7 +76,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet bottom horizontal? type y");
 
@@ -94,7 +88,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet first vertical? type y");
 
@@ -106,7 +100,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet second vertical? type y");
 
@@ -118,7 +112,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet third vertical? type y");
 
@@ -130,7 +124,7 @@
 
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet on the top diagonal?");
 
@@ -141,7 +135,7 @@
                         }
                     }
 
-                    if (cash > 0)
+                    if (cash > BROKE)
                     {
                         Console.WriteLine("do you wanna bet on the bottom diagonal?");
 
@@ -161,13 +155,20 @@
 
                 Console.WriteLine("-------");
 
-                for (int i = 0; i < slotArray.GetLength(0); i++)
+                Random slotArrayRandom = new();
+                int[,] slotArray = new int[3, 3];
+
+                for (int row = 0; row < slotArray.GetLength(0); row++)
                 {
-                    Console.Write($" {slotArray[i, 0]}");
+                    for (int col = 0; col < slotArray.GetLength(1); col++)
+                    {
+                        slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
+                    }
+                    Console.Write($" {slotArray[row, 0]}");
 
-                    Console.Write($" {slotArray[i, 1]}");
+                    Console.Write($" {slotArray[row, 1]}");
 
-                    Console.WriteLine($" {slotArray[i, 2]}");
+                    Console.WriteLine($" {slotArray[row, 2]}");
                 }
 
                 Console.WriteLine("-------");
