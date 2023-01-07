@@ -163,12 +163,9 @@
                     for (int col = 0; col < slotArray.GetLength(1); col++)
                     {
                         slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
+                        Console.Write($" {slotArray[row, col]}");
                     }
-                    Console.Write($" {slotArray[row, 0]}");
-
-                    Console.Write($" {slotArray[row, 1]}");
-
-                    Console.WriteLine($" {slotArray[row, 2]}");
+                    Console.WriteLine();
                 }
 
                 Console.WriteLine("-------");
@@ -178,7 +175,7 @@
                     if (topH)
                     {
                         Console.WriteLine("you have won on the top horizontal line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -193,7 +190,7 @@
                     if (midH)
                     {
                         Console.WriteLine("You have won on the mid horizontal line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -208,7 +205,7 @@
                     if (btmH)
                     {
                         Console.WriteLine("You have won on the bottom horizontal line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -223,7 +220,7 @@
                     if (firstV)
                     {
                         Console.WriteLine("You have won on the first vertical line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -238,7 +235,7 @@
                     if (secondV)
                     {
                         Console.WriteLine("You have won on the second vertical line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -253,7 +250,7 @@
                     if (thirdV)
                     {
                         Console.WriteLine("You have won on the third vertical line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -268,7 +265,7 @@
                     if (diagonalTop)
                     {
                         Console.WriteLine("You have won on the top diagonal line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -283,7 +280,7 @@
                     if (diagonalBtm)
                     {
                         Console.WriteLine("You have won on the the bottom diagonal line!");
-                        cash += 2;
+                        cash += WINPAYOUT;
                     }
 
                 }
@@ -293,15 +290,7 @@
                     Console.WriteLine("you lost your bet on the bottom diagonal line");
                 }
 
-                if (cash > cashUpOrDown)
-                {
-                    Console.WriteLine($"Your cash after round {round} is : {cash}");
-                }
-
-                else
-                {
-                    Console.WriteLine($"Your cash after round {round} is : {cash}");
-                }
+                Console.WriteLine($"Your cash after round {round} is : {cash}");
 
             }
             while (cash > 0);
