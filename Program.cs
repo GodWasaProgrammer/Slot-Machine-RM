@@ -26,7 +26,6 @@
                 bool allBets = false;
                 bool diagonalTop = false;
                 bool diagonalBtm = false;
-                int cashUpOrDown = cash;
 
                 Console.WriteLine("Which lines would you like to bet on?");
 
@@ -46,6 +45,7 @@
                         diagonalTop = true;
                         diagonalBtm = true;
                         cash -= MAXBET;
+
                     }
 
                 }
