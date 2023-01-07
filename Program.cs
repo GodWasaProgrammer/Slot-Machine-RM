@@ -4,9 +4,17 @@
     {
         const int MAXVALUE = 4;
         const int MINVALUE = 1;
-        const int MAXBET = 8;
+        const int MAXBET = 3;
         const int BROKE = 0;
         const int WINPAYOUT = 2;
+        const int DIAGONALBET = 2;
+
+        enum Bets
+        {
+            Horizontal = 1,
+            Vertical = 2,
+            Diagonals = 3,
+        };
 
         static void Main()
         {
@@ -17,136 +25,18 @@
 
             do
             {
-                bool topH = false;
-                bool midH = false;
-                bool btmH = false;
-                bool firstV = false;
-                bool secondV = false;
-                bool thirdV = false;
-                bool allBets = false;
-                bool diagonalTop = false;
-                bool diagonalBtm = false;
-
                 Console.WriteLine("Which lines would you like to bet on?");
 
-                if (cash > MAXBET)
+                int i = 1;
+                foreach (var Choice in Enum.GetNames(typeof(Bets)))
                 {
-                    Console.WriteLine($"Do you wanna bet all lines? ({MAXBET} dollars) type y");
-
-                    if (Console.ReadLine() == "y")
-                    {
-                        topH = true;
-                        midH = true;
-                        btmH = true;
-                        firstV = true;
-                        secondV = true;
-                        thirdV = true;
-                        allBets = true;
-                        diagonalTop = true;
-                        diagonalBtm = true;
-                        cash -= MAXBET;
-
-                    }
-
+                    Console.WriteLine($"{i} {Choice},");
+                    i++;
                 }
 
-                if (allBets == false)
-                {
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet on top horizontal? type y");
+                Console.WriteLine("Insert the number of the line you would like to play.");
 
-                        if (Console.ReadLine() == "y")
-                        {
-                            topH = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet mid horizontal? type y");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            midH = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet bottom horizontal? type y");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            btmH = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet first vertical? type y");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            firstV = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet second vertical? type y");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            secondV = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet third vertical? type y");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            thirdV = true;
-                            cash--;
-                        }
-
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet on the top diagonal?");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            diagonalTop = true;
-                            cash--;
-                        }
-                    }
-
-                    if (cash > BROKE)
-                    {
-                        Console.WriteLine("do you wanna bet on the bottom diagonal?");
-
-                        if (Console.ReadLine() == "y")
-                        {
-                            diagonalBtm = true;
-                            cash--;
-                        }
-                    }
-
-                }
+                Int32.TryParse(Console.ReadLine(), out i);
 
                 round++;
                 Console.WriteLine($"Current round:{round}");
@@ -154,146 +44,132 @@
                 Console.WriteLine($"current cash {cash}");
 
                 Console.WriteLine("-------");
-
-                Random slotArrayRandom = new();
                 int[,] slotArray = new int[3, 3];
 
                 for (int row = 0; row < slotArray.GetLength(0); row++)
                 {
                     for (int col = 0; col < slotArray.GetLength(1); col++)
                     {
+                        Random slotArrayRandom = new();
                         slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
                         Console.Write($" {slotArray[row, col]}");
                     }
+
                     Console.WriteLine();
                 }
 
                 Console.WriteLine("-------");
 
-                if (slotArray[0, 0] == slotArray[0, 1] && slotArray[0, 1] == slotArray[0, 2])
+                if (i == (int)Bets.Horizontal)
                 {
-                    if (topH)
+                    cash -= MAXBET;
+                    int payoutcounter = 0;
+                    if (slotArray[0, 0] == slotArray[0, 1] && slotArray[0, 1] == slotArray[0, 2])
                     {
-                        Console.WriteLine("you have won on the top horizontal line!");
-                        cash += WINPAYOUT;
+                        Console.WriteLine("You have won on the top horizontal line!");
+                        payoutcounter++;
                     }
 
-                }
-
-                else if (topH)
-                {
-                    Console.WriteLine("you lost your bet on the top horizontal line");
-                }
-
-                if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
-                {
-                    if (midH)
+                    else
                     {
-                        Console.WriteLine("You have won on the mid horizontal line!");
-                        cash += WINPAYOUT;
+                        Console.WriteLine("You have Lost on the top horizontal line!");
                     }
 
-                }
+                    if (slotArray[1, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[1, 2])
+                    {
+                        Console.WriteLine("You have won on the Middle horizontal Line!");
+                        payoutcounter++;
+                    }
 
-                else if (midH)
-                {
-                    Console.WriteLine("you lost your bet on the mid horizontal line");
-                }
+                    else
+                    {
+                        Console.WriteLine("You have lost on the Middle Horizontal Line!");
+                    }
 
-                if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
-                {
-                    if (btmH)
+                    if (slotArray[2, 0] == slotArray[2, 1] && slotArray[2, 1] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the bottom horizontal line!");
-                        cash += WINPAYOUT;
+                        payoutcounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have lost on the bottom horizontal line!");
                     }
 
+                    cash += payoutcounter * WINPAYOUT;
                 }
 
-                else if (btmH)
+                if (i == (int)Bets.Vertical)
                 {
-                    Console.WriteLine("you lost your bet on bottom horizontal line");
-                }
+                    cash -= MAXBET;
+                    int payoutcounter = 0;
 
-                if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
-                {
-                    if (firstV)
+                    if (slotArray[0, 0] == slotArray[1, 0] && slotArray[1, 0] == slotArray[2, 0])
                     {
                         Console.WriteLine("You have won on the first vertical line!");
-                        cash += WINPAYOUT;
+                        payoutcounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You lost on the first vertical line!");
                     }
 
-                }
-
-                else if (firstV)
-                {
-                    Console.WriteLine("you lost your bet on first vertical line");
-                }
-
-                if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
-                {
-                    if (secondV)
+                    if (slotArray[0, 1] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 1])
                     {
                         Console.WriteLine("You have won on the second vertical line!");
-                        cash += WINPAYOUT;
+                        payoutcounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You lost on the second vertical line!");
                     }
 
-                }
-
-                else if (secondV)
-                {
-                    Console.WriteLine("you lost your bet on second vertical line");
-                }
-
-                if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
-                {
-                    if (thirdV)
+                    if (slotArray[0, 2] == slotArray[1, 2] && slotArray[1, 2] == slotArray[2, 2])
                     {
                         Console.WriteLine("You have won on the third vertical line!");
-                        cash += WINPAYOUT;
+                        payoutcounter++;
                     }
-
-                }
-
-                else if (thirdV)
-                {
-                    Console.WriteLine("you lost your bet on the third vertical line");
-                }
-
-                if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
-                {
-                    if (diagonalTop)
+                    else
                     {
-                        Console.WriteLine("You have won on the top diagonal line!");
-                        cash += WINPAYOUT;
+                        Console.WriteLine("You lost on the third vertical line!");
                     }
 
+                    cash += payoutcounter * WINPAYOUT;
                 }
 
-                else if (diagonalTop)
+                if (i == (int)Bets.Diagonals)
                 {
-                    Console.WriteLine("you lost your bet on the top diagonal line");
-                }
+                    cash -= DIAGONALBET;
+                    int payOutCounter = 0;
 
-                if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
-                {
-                    if (diagonalBtm)
+                    if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
                     {
-                        Console.WriteLine("You have won on the the bottom diagonal line!");
-                        cash += WINPAYOUT;
+                        Console.WriteLine("You have won on the Top Diagonal Line!");
+                        payOutCounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have lost on the top diagonal Line!");
                     }
 
+                    if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
+                    {
+                        Console.WriteLine("You have won on the Bottom Diagonal Line!");
+                        payOutCounter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have Lost on the bottom Diagonal line!");
+                    }
+
+                    cash += payOutCounter * WINPAYOUT;
                 }
 
-                else if (diagonalBtm)
-                {
-                    Console.WriteLine("you lost your bet on the bottom diagonal line");
-                }
-
-                Console.WriteLine($"Your cash after round {round} is : {cash}");
-
+                Console.WriteLine($"Current cash is:{cash}");
+                Console.WriteLine("press any key to go again");
+                Console.ReadKey();
             }
-            while (cash > 0);
+            while (cash > BROKE);
 
             Console.WriteLine("you ran out of money!");
             Console.WriteLine("Game over!");
