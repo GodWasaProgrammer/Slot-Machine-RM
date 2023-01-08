@@ -11,6 +11,7 @@ namespace Slot_Machine_RM
         const int WINPAYOUT = 2;
         const int DIAGONALBET = 2;
 
+
         enum Bets
         {
             Horizontal = 1,
@@ -53,12 +54,23 @@ namespace Slot_Machine_RM
                 for (int row = 0; row < slotArray.GetLength(0); row++)
                 {
                     int counter = 0;
+                    int rowCounter;
+                    int columCounter;
+                    List<int> list = new List<int>();
 
                     for (int col = 0; col < slotArray.GetLength(1); col++)
                     {
                         Random slotArrayRandom = new();
                         slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
                         Console.Write($" {slotArray[row, col]}");
+
+                        list.Add(round);
+                        list.Add(counter);
+                        rowCounter = slotArray.GetLength(0);
+                        list.Add(rowCounter);
+                        columCounter = slotArray.GetLength(1);
+                        list.Add(columCounter);
+
                         if (counter == 0)
                         {
                             first = slotArray[row, col];
@@ -74,13 +86,10 @@ namespace Slot_Machine_RM
                             third = slotArray[row, col];
                         }
                         counter++;
-
-
                     }
 
                     Console.WriteLine();
                 }
-
 
                 Console.WriteLine("-------");
 
@@ -88,8 +97,6 @@ namespace Slot_Machine_RM
                 {
                     Console.WriteLine("we have a winner");
                 }
-
-
                 //if (i == (int)Bets.Horizontal)
                 //{
                 //    cash -= MAXBET;
