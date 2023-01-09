@@ -44,17 +44,17 @@ namespace Slot_Machine_RM
 
                 if (i == (int)Bets.Horizontals)
                 {
-                    cash = cash - MAXBET;
+                    cash -= MAXBET;
                 }
 
                 if (i == (int)Bets.Verticals)
                 {
-                    cash = cash - MAXBET;
+                    cash -= MAXBET;
                 }
 
                 if (i == (int)Bets.Diagonals)
                 {
-                    cash = cash - DIAGONALBET;
+                    cash -= DIAGONALBET;
                 }
 
                 round++;
@@ -64,15 +64,15 @@ namespace Slot_Machine_RM
                 int[,] slotArray = new int[3, 3];
                 bool betIsWon = false;
                 int amountOfWonLines = 0;
-
+                int iterationCounter = 0;
                 for (int row = 0; row < slotArray.GetLength(0); row++)
                 {
-
                     for (int col = 0; col < slotArray.GetLength(1); col++)
                     {
                         Random slotArrayRandom = new();
                         slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
                         Console.Write($" {slotArray[row, col]}");
+                        iterationCounter++;
 
 
                         if (i == (int)Bets.Horizontals)
@@ -84,6 +84,7 @@ namespace Slot_Machine_RM
                             }
 
                         }
+
                         if (i == (int)Bets.Verticals)
                         {
                             if (slotArray[0, col] == slotArray[1, col] && slotArray[1, col] == slotArray[2, col])
@@ -94,26 +95,28 @@ namespace Slot_Machine_RM
 
                         }
 
+                        if (i == (int)Bets.Diagonals)
+                        {
+                            if (iterationCounter == 9)
+                            {
+                                if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
+                                {
+                                    betIsWon = true;
+                                    amountOfWonLines++;
+                                }
+
+                                if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
+                                {
+                                    betIsWon = true;
+                                    amountOfWonLines++;
+                                }
+
+                            }
+                        }
+
                     }
 
                     Console.WriteLine();
-
-                    if (i == (int)Bets.Diagonals)
-                    {
-                        if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
-                        {
-                            betIsWon = true;
-                            amountOfWonLines++;
-                        }
-
-                        if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
-                        {
-                            betIsWon = true;
-                            amountOfWonLines++;
-                        }
-
-                    }
-
                 }
 
                 Console.WriteLine("-------");
