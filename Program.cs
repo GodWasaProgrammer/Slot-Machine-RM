@@ -45,13 +45,6 @@ namespace Slot_Machine_RM
                     Console.WriteLine($"{i + 1} {names[i]},");
                 }
 
-                //int i = 1;
-                //foreach (var Choice in Enum.GetNames(typeof(Bets)))
-                //{
-                //    Console.WriteLine($"{i + 1} {Choice},");
-                //    i++;
-                //}
-
                 Console.WriteLine("Insert the number of the line you would like to play.");
 
                 int choice;
@@ -77,60 +70,6 @@ namespace Slot_Machine_RM
                         cash -= SINGLEBET;
                         break;
                 }
-                //if (choice == (int)Bets.Horizontals)
-                //{
-                //    cash -= MAXBET;
-                //}
-
-                //if (choice == (int)Bets.Verticals)
-                //{
-                //    cash -= MAXBET;
-                //}
-
-                //if (choice == (int)Bets.Diagonals)
-                //{
-                //    cash -= DIAGONALBET;
-                //}
-
-                //if (choice == (int)Bets.FirstHorizontal)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.SecondHorizontal)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.ThirdHorizontal)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.FirstVertical)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.SecondVertical)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.ThirdVertical)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.TopToBottomDiagonal)
-                //{
-                //    cash -= SINGLEBET;
-                //}
-
-                //if (choice == (int)Bets.BottomToTopDiagonal)
-                //{
-                //    cash -= SINGLEBET;
-                //}
 
                 round++;
                 Console.WriteLine($"Current round:{round}");
