@@ -12,6 +12,7 @@
 
         enum Bets
         {
+            invalid,
             Horizontals,
             Verticals,
             Diagonals,
@@ -38,40 +39,44 @@
             {
                 var names = Enum.GetNames(typeof(Bets));
 
-                for (int i = 0; i < names.Length; i++)
+                for (int i = 1; i < names.Length; i++)
                 {
-                    Console.WriteLine($"{i + 1} {names[i]},");
+                    Console.WriteLine($"{i} {names[i]},");
                 }
 
                 Console.WriteLine("Insert the number of the line you would like to play.");
 
                 int choice;
-                int.TryParse(Console.ReadLine(), out choice);
 
-                // fixes the discrepancy between your pick and your actual enum choice
-                if (choice > 0)
+                while (true)
                 {
-                    choice = choice - 1;
+                    if (int.TryParse(Console.ReadLine(), out choice) == false)
+                    {
+                        Console.WriteLine("Nein Nein Nein! Das ist not a numbah!");
+                    }
+
+                    if (choice < 1 || choice > 11)
+                    {
+                        Console.WriteLine("between 1 and 11");
+                        continue;
+                    }
+
+                    break;
                 }
-                switch (choice)
+
+                if (choice < 3)
                 {
-                    case 0:
-                    case 1:
-                        cash -= MAXBET;
-                        break;
-                    case 2:
-                        cash -= DIAGONALBET;
-                        break;
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                        cash -= SINGLEBET;
-                        break;
+                    cash -= MAXBET;
+                }
+
+                else if (choice == 3)
+                {
+                    cash -= DIAGONALBET;
+                }
+
+                else
+                {
+                    cash -= SINGLEBET;
                 }
 
                 round++;
@@ -102,22 +107,14 @@
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.SecondHorizontal)
+                            if (choice == (int)Bets.SecondHorizontal && row == 1)
                             {
-                                if (row == 1)
-                                {
-                                    amountOfWonLines++;
-                                }
-
+                                amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.ThirdHorizontal)
+                            if (choice == (int)Bets.ThirdHorizontal && row == 2)
                             {
-                                if (row == 2)
-                                {
-                                    amountOfWonLines++;
-                                }
-
+                                amountOfWonLines++;
                             }
 
                         }
@@ -129,31 +126,19 @@
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.FirstVertical)
+                            if (choice == (int)Bets.FirstVertical && col == 0)
                             {
-                                if (col == 0)
-                                {
-                                    amountOfWonLines++;
-                                }
-
+                                amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.SecondVertical)
+                            if (choice == (int)Bets.SecondVertical && col == 1)
                             {
-                                if (col == 1)
-                                {
-                                    amountOfWonLines++;
-                                }
-
+                                amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.ThirdVertical)
+                            if (choice == (int)Bets.ThirdVertical && col == 2)
                             {
-                                if (col == 2)
-                                {
-                                    amountOfWonLines++;
-                                }
-
+                                amountOfWonLines++;
                             }
 
                         }
@@ -200,46 +185,16 @@
 
                 if (amountOfWonLines > 0)
                 {
-                    int roundPayOut = 0;
+                    string printBetChoice = Enum.GetName(typeof(Bets), choice);
 
                     switch (choice)
                     {
-                        case 0:
-                            Console.WriteLine($"You have won on the horizontal bet!");
-                            break;
-                        case 1:
-                            Console.WriteLine("You have won the vertical bet!");
-                            break;
-                        case 2:
-                            Console.WriteLine("You have won the diagonal bet!");
-                            break;
-                        case 3:
-                            Console.WriteLine("You have won on the first Horizontal!");
-                            break;
-                        case 4:
-                            Console.WriteLine("You have won on the second Horizontal!");
-                            break;
-                        case 5:
-                            Console.WriteLine("You have won on the third horizontal!");
-                            break;
-                        case 6:
-                            Console.WriteLine("You have won on the first vertical!");
-                            break;
-                        case 7:
-                            Console.WriteLine("You have won on the second vertical!");
-                            break;
-                        case 8:
-                            Console.WriteLine("You have won on the third vertical!");
-                            break;
-                        case 9:
-                            Console.WriteLine("You have won on the Top To Bottom Diagonal!");
-                            break;
-                        case 10:
-                            Console.WriteLine("You have won the bottom to top diagonal");
+                        case int i when choice >= 0 && i <= 10:
+                            Console.WriteLine($"You have won on the {printBetChoice} bet!");
                             break;
                     }
 
-                    roundPayOut = amountOfWonLines * WINPAYOUT;
+                    int roundPayOut = amountOfWonLines * WINPAYOUT;
                     Console.WriteLine($"Payout for {amountOfWonLines} Lines won is : {roundPayOut}");
 
                     cash += roundPayOut;
