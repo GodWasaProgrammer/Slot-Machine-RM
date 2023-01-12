@@ -4,7 +4,7 @@ namespace Slot_Machine_RM
 {
     internal class Program
     {
-        const int MAXVALUE = 4;
+        const int MAX_VALUE = 4;
         const int MINVALUE = 1;
         const int MAXBET = 3;
         const int BROKE = 0;
@@ -12,26 +12,24 @@ namespace Slot_Machine_RM
         const int DIAGONALBET = 2;
         const int SINGLEBET = 1;
 
-
         enum Bets
         {
-            Horizontals = 1,
-            Verticals = 2,
-            Diagonals = 3,
-            FirstHorizontal = 4,
-            SecondHorizontal = 5,
-            ThirdHorizontal = 6,
-            FirstVertical = 7,
-            SecondVertical = 8,
-            ThirdVertical = 9,
-            TopToBottomDiagonal = 10,
-            BottomToTopDiagonal = 11,
+            Horizontals,
+            Verticals,
+            Diagonals,
+            FirstHorizontal,
+            SecondHorizontal,
+            ThirdHorizontal,
+            FirstVertical,
+            SecondVertical,
+            ThirdVertical,
+            TopToBottomDiagonal,
+            BottomToTopDiagonal,
         };
 
         static void Main()
         {
             Console.WriteLine("Welcome to our slot machine");
-
 
             int cash = 100;
             Console.WriteLine($"you have {cash} to play with");
@@ -40,12 +38,19 @@ namespace Slot_Machine_RM
 
             do
             {
-                int i = 1;
-                foreach (var Choice in Enum.GetNames(typeof(Bets)))
+                var names = Enum.GetNames(typeof(Bets));
+
+                for (int i = 0; i < names.Length; i++)
                 {
-                    Console.WriteLine($"{i} {Choice},");
-                    i++;
+                    Console.WriteLine($"{i + 1} {names[i]},");
                 }
+
+                //int i = 1;
+                //foreach (var Choice in Enum.GetNames(typeof(Bets)))
+                //{
+                //    Console.WriteLine($"{i + 1} {Choice},");
+                //    i++;
+                //}
 
                 Console.WriteLine("Insert the number of the line you would like to play.");
 
@@ -112,15 +117,14 @@ namespace Slot_Machine_RM
 
                 Console.WriteLine("-------");
                 int[,] slotArray = new int[3, 3];
-                bool betIsWon = false;
                 int amountOfWonLines = 0;
                 int iterationCounter = 0;
                 for (int row = 0; row < slotArray.GetLength(0); row++)
                 {
                     for (int col = 0; col < slotArray.GetLength(1); col++)
                     {
-                        Random slotArrayRandom = new();
-                        slotArray[row, col] = slotArrayRandom.Next(MINVALUE, MAXVALUE);
+                        Random rng = new();
+                        slotArray[row, col] = rng.Next(MINVALUE, MAX_VALUE);
                         Console.Write($" {slotArray[row, col]}");
                         iterationCounter++;
 
@@ -128,25 +132,18 @@ namespace Slot_Machine_RM
                         {
                             if (choice == (int)Bets.Horizontals)
                             {
-                                betIsWon = true;
                                 amountOfWonLines++;
                             }
-                            
-                            if (choice == (int)Bets.FirstHorizontal)
-                            {
-                                if (row == 0)
-                                {
-                                    betIsWon = true;
-                                    amountOfWonLines++;
-                                }
 
+                            if (choice == (int)Bets.FirstHorizontal && row == 0)
+                            {
+                                amountOfWonLines++;
                             }
 
                             if (choice == (int)Bets.SecondHorizontal)
                             {
                                 if (row == 1)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -156,7 +153,6 @@ namespace Slot_Machine_RM
                             {
                                 if (row == 2)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -168,15 +164,13 @@ namespace Slot_Machine_RM
                         {
                             if (choice == (int)Bets.Verticals)
                             {
-                                betIsWon = true;
                                 amountOfWonLines++;
                             }
-                            
+
                             if (choice == (int)Bets.FirstVertical)
                             {
                                 if (col == 0)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -186,7 +180,6 @@ namespace Slot_Machine_RM
                             {
                                 if (col == 1)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -196,7 +189,6 @@ namespace Slot_Machine_RM
                             {
                                 if (col == 2)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -210,15 +202,14 @@ namespace Slot_Machine_RM
                             {
                                 if (choice == (int)Bets.TopToBottomDiagonal)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
                                 if (choice == (int)Bets.Diagonals)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
+
                             }
 
                             if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
@@ -226,13 +217,11 @@ namespace Slot_Machine_RM
 
                                 if (choice == (int)Bets.BottomToTopDiagonal)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
                                 if (choice == (int)Bets.Diagonals)
                                 {
-                                    betIsWon = true;
                                     amountOfWonLines++;
                                 }
 
@@ -247,74 +236,71 @@ namespace Slot_Machine_RM
 
                 Console.WriteLine("-------");
 
-                if (betIsWon)
+                if (amountOfWonLines > 0)
                 {
                     int roundPayOut = 0;
+
+                    // var eChoice = Bets.Diagonals;
+
+                    //Console.WriteLine($"You won: {eChoice.ToString()}");
+                    //roundPayOut = amountOfWonLines * WINPAYOUT;
+
                     if (choice == (int)Bets.Horizontals)
                     {
-                        Console.WriteLine("You have won on the horizontal bet!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
+                        Console.WriteLine($"You have won on the horizontal bet!");
                     }
 
                     if (choice == (int)Bets.Verticals)
                     {
                         Console.WriteLine("You have won the vertical bet!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.Diagonals)
                     {
                         Console.WriteLine("You have won the diagonal bet!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.FirstHorizontal)
                     {
                         Console.WriteLine("You have won on the first Horizontal!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.SecondHorizontal)
                     {
                         Console.WriteLine("You have won on the second Horizontal!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.ThirdHorizontal)
                     {
                         Console.WriteLine("You have won on the third horizontal!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.FirstVertical)
                     {
                         Console.WriteLine("You have won on the first vertical!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.SecondVertical)
                     {
                         Console.WriteLine("You have won on the second vertical!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.ThirdVertical)
                     {
                         Console.WriteLine("You have won on the first vertical!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.TopToBottomDiagonal)
                     {
                         Console.WriteLine("You have won on the Top To Bottom Diagonal!");
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
                     }
 
                     if (choice == (int)Bets.BottomToTopDiagonal)
                     {
-                        roundPayOut = amountOfWonLines * WINPAYOUT;
+                        Console.WriteLine("YOu have won the bottom to top diagonal");
                     }
 
+                    roundPayOut = amountOfWonLines * WINPAYOUT;
                     Console.WriteLine($"Payout for {amountOfWonLines} Lines won is : {roundPayOut}");
 
                     cash += roundPayOut;
