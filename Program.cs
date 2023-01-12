@@ -1,6 +1,4 @@
-﻿
-
-namespace Slot_Machine_RM
+﻿namespace Slot_Machine_RM
 {
     internal class Program
     {
@@ -49,6 +47,8 @@ namespace Slot_Machine_RM
 
                 int choice;
                 int.TryParse(Console.ReadLine(), out choice);
+
+                choice = choice - 1;
 
                 switch (choice)
                 {
