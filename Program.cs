@@ -48,7 +48,6 @@
                 int choice;
                 int.TryParse(Console.ReadLine(), out choice);
 
-
                 // fixes the discrepancy between your pick and your actual enum choice
                 if (choice > 0)
                 {
