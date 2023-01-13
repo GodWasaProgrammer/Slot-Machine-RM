@@ -64,12 +64,14 @@
                     break;
                 }
 
-                if (choice < 3)
+                var myChoiceAsEnum = (Bets)Enum.ToObject(typeof(Bets), choice);
+
+                if (myChoiceAsEnum < Bets.Diagonals)
                 {
                     cash -= MAXBET;
                 }
 
-                else if (choice == 3)
+                else if (myChoiceAsEnum == Bets.Diagonals)
                 {
                     cash -= DIAGONALBET;
                 }
@@ -97,22 +99,22 @@
 
                         if (slotArray[row, 0] == slotArray[row, 1] && slotArray[row, 1] == slotArray[row, 2])
                         {
-                            if (choice == (int)Bets.Horizontals)
+                            if (myChoiceAsEnum == Bets.Horizontals)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.FirstHorizontal && row == 0)
+                            if (myChoiceAsEnum == Bets.FirstHorizontal && row == 0)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.SecondHorizontal && row == 1)
+                            if (myChoiceAsEnum == Bets.SecondHorizontal && row == 1)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.ThirdHorizontal && row == 2)
+                            if (myChoiceAsEnum == Bets.ThirdHorizontal && row == 2)
                             {
                                 amountOfWonLines++;
                             }
@@ -121,22 +123,22 @@
 
                         if (slotArray[0, col] == slotArray[1, col] && slotArray[1, col] == slotArray[2, col])
                         {
-                            if (choice == (int)Bets.Verticals)
+                            if (myChoiceAsEnum == Bets.Verticals)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.FirstVertical && col == 0)
+                            if (myChoiceAsEnum == Bets.FirstVertical && col == 0)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.SecondVertical && col == 1)
+                            if (myChoiceAsEnum == Bets.SecondVertical && col == 1)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choice == (int)Bets.ThirdVertical && col == 2)
+                            if (myChoiceAsEnum == Bets.ThirdVertical && col == 2)
                             {
                                 amountOfWonLines++;
                             }
@@ -147,12 +149,12 @@
                         {
                             if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
                             {
-                                if (choice == (int)Bets.TopToBottomDiagonal)
+                                if (myChoiceAsEnum == Bets.TopToBottomDiagonal)
                                 {
                                     amountOfWonLines++;
                                 }
 
-                                if (choice == (int)Bets.Diagonals)
+                                if (myChoiceAsEnum == Bets.Diagonals)
                                 {
                                     amountOfWonLines++;
                                 }
@@ -162,12 +164,12 @@
                             if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
                             {
 
-                                if (choice == (int)Bets.BottomToTopDiagonal)
+                                if (myChoiceAsEnum == Bets.BottomToTopDiagonal)
                                 {
                                     amountOfWonLines++;
                                 }
 
-                                if (choice == (int)Bets.Diagonals)
+                                if (myChoiceAsEnum == Bets.Diagonals)
                                 {
                                     amountOfWonLines++;
                                 }
