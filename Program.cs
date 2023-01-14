@@ -64,18 +64,8 @@
                     break;
                 }
 
+                // makes a variable of type Bets, and reads a position of Bets by using the index of choice
                 Bets choiceCasted = (Bets)choice;
-
-                //Bets myChoiceAsEnum = (Bets)Enum.ToObject(typeof(Bets), choice);
-
-                //if (Enum.TryParse(typeof(Bets), choice.ToString(), out object diditwork))
-                //{
-                //    Console.WriteLine(diditwork);
-                //}
-
-                //Console.WriteLine((Bets)Enum.Parse(typeof(Bets), choice.ToString()));
-
-                //Console.WriteLine(choice);
 
                 if (choiceCasted < Bets.Diagonals)
                 {
