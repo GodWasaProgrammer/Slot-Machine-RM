@@ -190,13 +190,6 @@
                 {
                     string printBetChoice = Enum.GetName(typeof(Bets), choice);
 
-                    //switch (choice)
-                    //{
-                    //    case int i when choice >= 0 && i <= 10:
-                    //        Console.WriteLine($"You have won on the {printBetChoice} bet!");
-                    //        break;
-                    //}
-
                     if (choice <= 11)
                     {
                         Console.WriteLine($"You have won on the {printBetChoice} bet!");
