@@ -9,6 +9,7 @@
         const int WINPAYOUT = 2;
         const int DIAGONALBET = 2;
         const int SINGLEBET = 1;
+        const int ATMREFILL = 100;
 
         enum Bets
         {
@@ -30,7 +31,7 @@
         {
             Console.WriteLine("Welcome to our slot machine");
 
-            int cash = 100;
+            int cash = ATMREFILL;
             Console.WriteLine($"you have {cash} to play with");
 
             int round = 0;
@@ -46,16 +47,16 @@
 
                 Console.WriteLine("Insert the number of the line you would like to play.");
 
-                int choice;
+                int choiceInt;
 
                 while (true)
                 {
-                    if (int.TryParse(Console.ReadLine(), out choice) == false)
+                    if (int.TryParse(Console.ReadLine(), out choiceInt) == false)
                     {
                         Console.WriteLine("Nein Nein Nein! Das ist not a numbah!");
                     }
 
-                    if (choice < 1 || choice > 11)
+                    if (choiceInt < 1 || choiceInt > 11)
                     {
                         Console.WriteLine("between 1 and 11");
                         continue;
@@ -65,18 +66,16 @@
                 }
 
                 // makes a variable of type Bets, and reads a position of Bets by using the index of choice
-                Bets choiceCasted = (Bets)choice;
+                Bets choice = (Bets)choiceInt;
 
-                if (choiceCasted < Bets.Diagonals)
+                if (choice < Bets.Diagonals)
                 {
                     cash -= MAXBET;
                 }
-
-                else if (choiceCasted == Bets.Diagonals)
+                else if (choice == Bets.Diagonals)
                 {
                     cash -= DIAGONALBET;
                 }
-
                 else
                 {
                     cash -= SINGLEBET;
@@ -100,22 +99,22 @@
 
                         if (slotArray[row, 0] == slotArray[row, 1] && slotArray[row, 1] == slotArray[row, 2])
                         {
-                            if (choiceCasted == Bets.Horizontals)
+                            if (choice == Bets.Horizontals)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.FirstHorizontal && row == 0)
+                            if (choice == Bets.FirstHorizontal && row == 0)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.SecondHorizontal && row == 1)
+                            if (choice == Bets.SecondHorizontal && row == 1)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.ThirdHorizontal && row == 2)
+                            if (choice == Bets.ThirdHorizontal && row == 2)
                             {
                                 amountOfWonLines++;
                             }
@@ -124,22 +123,22 @@
 
                         if (slotArray[0, col] == slotArray[1, col] && slotArray[1, col] == slotArray[2, col])
                         {
-                            if (choiceCasted == Bets.Verticals)
+                            if (choice == Bets.Verticals)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.FirstVertical && col == 0)
+                            if (choice == Bets.FirstVertical && col == 0)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.SecondVertical && col == 1)
+                            if (choice == Bets.SecondVertical && col == 1)
                             {
                                 amountOfWonLines++;
                             }
 
-                            if (choiceCasted == Bets.ThirdVertical && col == 2)
+                            if (choice == Bets.ThirdVertical && col == 2)
                             {
                                 amountOfWonLines++;
                             }
@@ -150,12 +149,12 @@
                         {
                             if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
                             {
-                                if (choiceCasted == Bets.TopToBottomDiagonal)
+                                if (choice == Bets.TopToBottomDiagonal)
                                 {
                                     amountOfWonLines++;
                                 }
 
-                                if (choiceCasted == Bets.Diagonals)
+                                if (choice == Bets.Diagonals)
                                 {
                                     amountOfWonLines++;
                                 }
@@ -165,12 +164,12 @@
                             if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
                             {
 
-                                if (choiceCasted == Bets.BottomToTopDiagonal)
+                                if (choice == Bets.BottomToTopDiagonal)
                                 {
                                     amountOfWonLines++;
                                 }
 
-                                if (choiceCasted == Bets.Diagonals)
+                                if (choice == Bets.Diagonals)
                                 {
                                     amountOfWonLines++;
                                 }
@@ -188,12 +187,7 @@
 
                 if (amountOfWonLines > 0)
                 {
-                    string printBetChoice = Enum.GetName(typeof(Bets), choice);
-
-                    if (choice <= 11)
-                    {
-                        Console.WriteLine($"You have won on the {printBetChoice} bet!");
-                    }
+                    Console.WriteLine($"You have won on the {choice} bet!");
 
                     int roundPayOut = amountOfWonLines * WINPAYOUT;
                     Console.WriteLine($"Payout for {amountOfWonLines} Lines won is : {roundPayOut}");
