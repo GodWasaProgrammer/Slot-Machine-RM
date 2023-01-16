@@ -27,22 +27,18 @@
             BottomToTopDiagonal,
         };
 
+        
         static void Main()
         {
             int choiceInt;
-
-            Console.WriteLine("Welcome to our slot machine");
-
             int cash = ATMREFILL;
-            Console.WriteLine($"you have {cash} to play with");
-
             int round = 0;
             int[,] slotArray = new int[3, 3];
 
+            WelcomeAndCashPrint(cash);
             do
             {
                 choiceInt = InputVerification();
-
                 Bets choice = (Bets)choiceInt;
 
                 cash -= ReturnCostOfBet(choice);
@@ -55,16 +51,20 @@
 
                 cash += PayOut(amountOfWonLines);
 
-                Console.WriteLine($"Current cash is:{cash}");
-
                 round++;
-                Console.WriteLine($"Current round:{round}");
+
+                CurrentCashAndRound(cash,round);
             }
             while (cash > BROKE);
 
             Console.WriteLine("you ran out of money!");
 
             Console.WriteLine("Game over!");
+        }
+        static void WelcomeAndCashPrint(int cash)
+        {
+            Console.WriteLine("Welcome to our slot machine");
+            Console.WriteLine($"you have {cash} to play with");
         }
         static int InputVerification()
         {
@@ -132,7 +132,6 @@
         {
             int amountOfWonLines = 0;
 
-            // diagonal working 
             if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
             {
                 if (choice == Bets.TopToBottomDiagonal)
@@ -235,6 +234,12 @@
         {
             int roundPayOut = WonLines * WINPAYOUT;
             return roundPayOut;
+        }
+        static void CurrentCashAndRound(int cash, int round)
+        {
+            Console.WriteLine($"Current cash is:{cash}");
+
+            Console.WriteLine($"Current round:{round}");
         }
     }
 }
