@@ -44,5 +44,12 @@ public static class UI
 
         Console.WriteLine($"Current round:{round}");
     }
+
+    public static void GameLost()
+    {
+        Console.WriteLine("you ran out of money!");
+
+        Console.WriteLine("Game over!");
+    }
 }
 

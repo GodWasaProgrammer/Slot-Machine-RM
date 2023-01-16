@@ -4,11 +4,12 @@
     {
         public static void Game()
         {
-            UI.WelcomeAndCashPrint(Data.cash);
             Data.cash = Data.ATMREFILL;
+
+            UI.WelcomeAndCashPrint(Data.cash);
+            
             do
             {
-
                 Data.choiceInt = GameCalculations.InputVerification();
                 Data.Bets choice = (Data.Bets)Data.choiceInt;
 
@@ -28,9 +29,7 @@
             }
             while (Data.cash > Data.BROKE);
 
-            Console.WriteLine("you ran out of money!");
-
-            Console.WriteLine("Game over!");
+            UI.GameLost();
         }
     }
 }
