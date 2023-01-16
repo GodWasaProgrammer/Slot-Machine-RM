@@ -69,6 +69,7 @@
         static int InputVerification()
         {
             var names = Enum.GetNames(typeof(Bets));
+
             for (int i = 1; i < names.Length; i++)
             {
                 Console.WriteLine($"{i} {names[i]},");
@@ -107,10 +108,9 @@
             {
                 return SINGLEBET;
             }
+
         }
         static void PrintSlotArray(int[,] slotArray)
-
-
         {
             Console.WriteLine("-------");
 
@@ -226,7 +226,6 @@
 
                 int localPayout = PayOut(WonLines);
                 Console.WriteLine($"Payout for {WonLines} Lines won is : {localPayout}");
-
             }
 
         }
