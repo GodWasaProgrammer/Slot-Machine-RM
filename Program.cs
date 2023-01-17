@@ -2,7 +2,7 @@
 
 namespace Slot_Machine_RM
 {
-    internal class Program
+    public class Program
     {
         static void Main()
         {

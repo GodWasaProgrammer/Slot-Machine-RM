@@ -1,6 +1,6 @@
 ﻿namespace Slot_Machine_RM
 {
-    internal class GameLogic
+    public class GameLogic
     {
         public static int ReturnCostOfBet(Enums.Bets yourchoice)
         {
