@@ -18,6 +18,7 @@
             }
 
         }
+
         public static int CalculateWinningLines(int[,] slotArray, Enums.Bets choice)
         {
             int amountOfWonLines = 0;
