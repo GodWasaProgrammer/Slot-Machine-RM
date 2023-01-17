@@ -1,42 +1,14 @@
 ﻿namespace Slot_Machine_RM
 {
-    internal class GameCalculations
+    internal class GameLogic
     {
-        public static int InputVerification()
+        public static int ReturnCostOfBet(Enums.Bets yourchoice)
         {
-            var names = Enum.GetNames(typeof(Data.Bets));
-
-            for (int i = 1; i < names.Length; i++)
-            {
-                Console.WriteLine($"{i} {names[i]},");
-            }
-
-            Console.WriteLine("Insert the number of the line you would like to play.");
-
-            while (true)
-            {
-                if (int.TryParse(Console.ReadLine(), out int input) == false)
-                {
-                    Console.WriteLine("Nein Nein Nein! Das ist not a numbah!");
-                }
-
-                if (input < 1 || input > 11)
-                {
-                    Console.WriteLine("between 1 and 11");
-                    continue;
-                }
-
-                return input;
-            }
-
-        }
-        public static int ReturnCostOfBet(Data.Bets yourchoice)
-        {
-            if (yourchoice < Data.Bets.Diagonals)
+            if (yourchoice < Enums.Bets.Diagonals)
             {
                 return Data.MAXBET;
             }
-            else if (yourchoice == Data.Bets.Diagonals)
+            else if (yourchoice == Enums.Bets.Diagonals)
             {
                 return Data.DIAGONALBET;
             }
@@ -46,18 +18,18 @@
             }
 
         }
-        public static int CalculateWinningLines(int[,] slotArray, Data.Bets choice)
+        public static int CalculateWinningLines(int[,] slotArray, Enums.Bets choice)
         {
             int amountOfWonLines = 0;
 
             if (slotArray[0, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[2, 2])
             {
-                if (choice == Data.Bets.TopToBottomDiagonal)
+                if (choice == Enums.Bets.TopToBottomDiagonal)
                 {
                     amountOfWonLines++;
                 }
 
-                if (choice == Data.Bets.Diagonals)
+                if (choice == Enums.Bets.Diagonals)
                 {
                     amountOfWonLines++;
                 }
@@ -66,12 +38,12 @@
 
             if (slotArray[2, 0] == slotArray[1, 1] && slotArray[1, 1] == slotArray[0, 2])
             {
-                if (choice == Data.Bets.BottomToTopDiagonal)
+                if (choice == Enums.Bets.BottomToTopDiagonal)
                 {
                     amountOfWonLines++;
                 }
 
-                if (choice == Data.Bets.Diagonals)
+                if (choice == Enums.Bets.Diagonals)
                 {
                     amountOfWonLines++;
                 }
@@ -83,22 +55,22 @@
 
                 if (slotArray[row, 0] == slotArray[row, 1] && slotArray[row, 1] == slotArray[row, 2])
                 {
-                    if (choice == Data.Bets.Horizontals)
+                    if (choice == Enums.Bets.Horizontals)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.FirstHorizontal && row == 0)
+                    if (choice == Enums.Bets.FirstHorizontal && row == 0)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.SecondHorizontal && row == 1)
+                    if (choice == Enums.Bets.SecondHorizontal && row == 1)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.ThirdHorizontal && row == 2)
+                    if (choice == Enums.Bets.ThirdHorizontal && row == 2)
                     {
                         amountOfWonLines++;
                     }
@@ -111,22 +83,22 @@
             {
                 if (slotArray[0, col] == slotArray[1, col] && slotArray[1, col] == slotArray[2, col])
                 {
-                    if (choice == Data.Bets.Verticals)
+                    if (choice == Enums.Bets.Verticals)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.FirstVertical && col == 0)
+                    if (choice == Enums.Bets.FirstVertical && col == 0)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.SecondVertical && col == 1)
+                    if (choice == Enums.Bets.SecondVertical && col == 1)
                     {
                         amountOfWonLines++;
                     }
 
-                    if (choice == Data.Bets.ThirdVertical && col == 2)
+                    if (choice == Enums.Bets.ThirdVertical && col == 2)
                     {
                         amountOfWonLines++;
                     }
@@ -136,6 +108,7 @@
             }
             return amountOfWonLines;
         }
+
         public static int PayOut(int WonLines)
         {
             int roundPayOut = WonLines * Data.WINPAYOUT;

@@ -7,6 +7,20 @@ public static class UI
         Console.WriteLine("Welcome to our slot machine");
         Console.WriteLine($"you have {cash} to play with");
     }
+
+    public static void FillSlotArray(int[,] slotArray)
+    {
+        for (int row = 0; row < slotArray.GetLength(0); row++)
+        {
+            for (int col = 0; col < slotArray.GetLength(1); col++)
+            {
+                Random rng = new();
+                slotArray[row, col] = rng.Next(Data.MINVALUE, Data.MAX_VALUE);
+            }
+
+        }
+    }
+
     public static void PrintSlotArray(int[,] slotArray)
     {
         Console.WriteLine("-------");
@@ -15,8 +29,6 @@ public static class UI
         {
             for (int col = 0; col < slotArray.GetLength(1); col++)
             {
-                Random rng = new();
-                slotArray[row, col] = rng.Next(Data.MINVALUE, Data.MAX_VALUE);
                 Console.Write($" {slotArray[row, col]}");
             }
 
@@ -26,14 +38,47 @@ public static class UI
         Console.WriteLine("-------");
     }
 
-    public static void PrintWonLines(int WonLines, Data.Bets choice)
+    public static int InputVerification()
+    {
+        var names = Enum.GetNames(typeof(Enums.Bets));
+
+        for (int i = 1; i < names.Length; i++)
+        {
+            Console.WriteLine($"{i} {names[i]},");
+        }
+
+        Console.WriteLine("Insert the number of the line you would like to play.");
+
+        while (true)
+        {
+            if (int.TryParse(Console.ReadLine(), out int input) == false)
+            {
+                Console.WriteLine("Nein Nein Nein! Das ist not a numbah!");
+            }
+
+            if (input < 1 || input > 11)
+            {
+                Console.WriteLine("between 1 and 11");
+                continue;
+            }
+
+            return input;
+        }
+
+    }
+
+    public static void PrintWonLines(int WonLines, Enums.Bets choice)
     {
         if (WonLines > 0)
         {
             Console.WriteLine($"You have won on the {choice} bet!");
 
-            int localPayout = GameCalculations.PayOut(WonLines);
+            int localPayout = GameLogic.PayOut(WonLines);
             Console.WriteLine($"Payout for {WonLines} Lines won is : {localPayout}");
+        }
+        else
+        {
+            Console.WriteLine("Sorry my man, you lost your bet!");
         }
 
     }
@@ -51,5 +96,6 @@ public static class UI
 
         Console.WriteLine("Game over!");
     }
+
 }
 
