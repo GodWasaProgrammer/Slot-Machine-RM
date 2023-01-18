@@ -8,19 +8,6 @@ public static class UI
         Console.WriteLine($"you have {cash} to play with");
     }
 
-    public static void FillSlotArray(int[,] slotArray)
-    {
-        for (int row = 0; row < slotArray.GetLength(0); row++)
-        {
-            for (int col = 0; col < slotArray.GetLength(1); col++)
-            {
-                Random rng = new();
-                slotArray[row, col] = rng.Next(Data.MINVALUE, Data.MAX_VALUE);
-            }
-
-        }
-    }
-
     public static void PrintSlotArray(int[,] slotArray)
     {
         Console.WriteLine("-------");
@@ -40,7 +27,7 @@ public static class UI
 
     public static int InputVerification()
     {
-        var names = Enum.GetNames(typeof(Enums.Bets));
+        var names = Enum.GetNames(typeof(Bets));
 
         for (int i = 1; i < names.Length; i++)
         {
@@ -67,7 +54,7 @@ public static class UI
 
     }
 
-    public static void PrintWonLines(int WonLines, Enums.Bets choice)
+    public static void PrintWonLines(int WonLines, Bets choice)
     {
         if (WonLines > 0)
         {

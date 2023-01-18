@@ -6,24 +6,24 @@ namespace Slot_Machine_RM
     {
         static void Main()
         {
-            int cash;
+            
             int round = 0;
 
             int[,] slotArray = new int[3, 3];
 
-            cash = Data.ATMREFILL;
+            int cash = Data.ATMREFILL;
 
             UI.WelcomeAndCashPrint(cash);
 
             do
             {
-                int choiceInt;
-                choiceInt = UI.InputVerification();
-                Enums.Bets choice = (Enums.Bets)choiceInt;
+                
+                int choiceInt = UI.InputVerification();
+                Bets choice = (Bets)choiceInt;
 
                 cash -= GameLogic.ReturnCostOfBet(choice);
 
-                UI.FillSlotArray(slotArray);
+                GameLogic.FillSlotArray(slotArray);
 
                 UI.PrintSlotArray(slotArray);
 
