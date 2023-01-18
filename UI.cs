@@ -27,7 +27,7 @@ public static class UI
 
     public static int InputVerification()
     {
-        var names = Enum.GetNames(typeof(Bets));
+        var names = Enum.GetNames(typeof(Bets)); 
 
         for (int i = 1; i < names.Length; i++)
         {

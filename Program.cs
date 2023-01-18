@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Slot_Machine_RM
+﻿namespace Slot_Machine_RM
 {
     public class Program
     {

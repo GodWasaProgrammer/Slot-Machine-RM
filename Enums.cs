@@ -1,4 +1,5 @@
 ﻿namespace Slot_Machine_RM;
+
 public enum Bets
 {
     invalid,
