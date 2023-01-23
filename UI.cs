@@ -54,14 +54,13 @@ public static class UI
 
     }
 
-    public static void PrintWonLines(int WonLines, Bets choice)
+    public static void PrintWonLines(int WonLines, Bets choice, int PayOut)
     {
         if (WonLines > 0)
         {
             Console.WriteLine($"You have won on the {choice} bet!");
 
-            int localPayout = GameLogic.PayOut(WonLines);
-            Console.WriteLine($"Payout for {WonLines} Lines won is : {localPayout}");
+            Console.WriteLine($"Payout for {WonLines} Lines won is : {PayOut}");
         }
         else
         {
