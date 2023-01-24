@@ -27,7 +27,7 @@
 
                 int amountOfWonLines = GameLogic.CalculateWinningLines(slotArray, choice);
                 int PayOut = GameLogic.PayOut(amountOfWonLines);
-                cash += payOut;
+                cash += PayOut;
                 UI.PrintWonLines(amountOfWonLines, choice,PayOut);
 
                 round++;
